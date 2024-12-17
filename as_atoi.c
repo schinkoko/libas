@@ -1,28 +1,19 @@
 #include "libas.h"
 
-size_t as_strlen(const char *str) {
-
-	size_t len = 0;
-
-	while (str[len] != '\0')
-		len++;
-	return len;
-}
-
 int as_atoi(const char *str) {
 
-	int c, i = 0;
+	int res = 0, sign = 1, ind = 0;
 
-	for (c = as_strlen(str); str[c] != '\0'; c--) {
+	while (str[ind] == ' ')
+		ind++;
 
-		if (str[c] < '0' || str[c] > '9') {
-
-
-		}
-		else {
-
-			i = 0;
-		}
+	if (str[ind] == '+' || str[ind] == '-') {
+		if (str[ind] == '-')
+			sign = -1;
 	}
-	return i;
+
+	while (str[ind] >= '0' && str[ind] <= '9')
+		res = 10 * res + (str[ind++] - '0');
+
+	return res * sign;
 }

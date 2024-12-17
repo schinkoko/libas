@@ -1,24 +1,29 @@
-#libas self-written standard C-library Makefile
-CC = gcc
+#libas - self-written standard C-library Makefile
+COMPILER = cc
+CFLAGS = -std=c99 -Wall -Wextra -Werror
 LINKER = ar
-CFLAGS = -std=c98 -Wall -Wextra -Werror
 LFLAGS = rcs
 NAME = libas.a
-SRC := $(wildcard *.c)
-OBJ := $(SRC: .c=.o)
+SRC := $(filter-out test.c, $(wildcard *.c))
+OBJ := $(SRC:.c=.o)
 
-$(NAME): $(SRC)
-	echo $(OBJ)
-	$(CC) $(CFLAGS) -o $(OBJ) $(SRC)
-	$(LINKER) $(LFLAGS) $(OBJ)
+test: test.c
+	rm -f test
+	$(COMPILER) test.c -L. -l:libas.a -o test
 
-all: $(NAME)
+%.o: %.c
+	$(COMPILER) $(CFLAGS) -c $^ -o $@
+
+$(NAME): $(OBJ)
+	$(LINKER) $(LFLAGS) $(NAME) $(OBJ)
+
+all: $(NAME) test
 
 clean:
 	rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) test
 
 re: fclean all
 
