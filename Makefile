@@ -1,6 +1,6 @@
 #libas - self-written standard C-library Makefile
 COMPILER = cc
-CFLAGS = -std=c99 -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 LINKER = ar
 LFLAGS = rcs
 NAME = libas.a
