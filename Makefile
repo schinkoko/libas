@@ -9,7 +9,7 @@ OBJ := $(SRC:.c=.o)
 
 test: test.c
 	rm -f test
-	$(COMPILER) test.c -L. -l:libas.a -o test
+	$(COMPILER) test.c -L. -l:$(NAME) -o test
 
 %.o: %.c
 	$(COMPILER) $(CFLAGS) -c $^ -o $@

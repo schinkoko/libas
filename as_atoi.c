@@ -12,7 +12,7 @@ int as_atoi(const char *str) {
 			sign = -1;
 	}
 
-	while (str[ind] >= '0' && str[ind] <= '9')
+	while (as_isdigit(str[ind]))
 		res = 10 * res + (str[ind++] - '0');
 
 	return res * sign;
