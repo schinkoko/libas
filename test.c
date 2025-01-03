@@ -5,6 +5,12 @@
 
 int main() {
 	int i;
+
+	printf("%d", atoi("3"));
+	as_error()
+
+
+	/*
 	int *pointer1 = malloc(30);
 	int *pointer2 = (int *)((char *)pointer1 + 20);// malloc(20);
 
@@ -36,6 +42,6 @@ int main() {
 	//printf("\n%d\n", as_atoi(st));
 
 	free(pointer1);
-	//free(pointer2);
+	//free(pointer2);*/
 	return 0;
 }
