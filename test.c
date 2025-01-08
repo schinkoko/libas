@@ -1,47 +1,33 @@
 #include "libas.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 int main() {
+
 	int i;
+	char stroing1[] = "Halloliebeleutewiegehtseuch";
+	char stroing2[] = "ichversteheesnicht         ";
+	char *str1 = malloc(as_strlen(stroing1) + 1);
+	char *str2 = malloc(as_strlen(stroing2) + 1);
+	as_memcpy(str1, stroing1, as_strlen(stroing1) + 1);
+	as_memcpy(str2, stroing2, as_strlen(stroing2) + 1);
 
-	printf("%d", atoi("3"));
-	as_error()
+	printf("%s\n", str1);
+	printf("%s\n", str2);
 
+	as_memmove(str2, str1, as_strlen(str1));
 
-	/*
-	int *pointer1 = malloc(30);
-	int *pointer2 = (int *)((char *)pointer1 + 20);// malloc(20);
+	for (i = 0; i < as_strlen(str1); i++)
+		str1[i] = (char)as_toupper(str1[i]);
 
-	for (i = 0; i < 30; i++)
-		as_memset(&((char*)pointer1)[i], i, 1);
-	//as_memset(pointer2, '0', 10);
+	printf("%s\n", str1);
+	printf("%s\n", str2);
 
-	for (i = 0; i < 20; i++) {
-		printf("%d ", ((char *)pointer1)[i]);
-	}
-	printf("\n");
-	for (i = 0; i < 20; i++) {
-		printf("%d ", ((char *)pointer2)[i]);
-	}
-	printf("\n");
+	for (i = 0; i < as_strlen(str1); i++)
+		str1[i] = (char)as_tolower(str1[i]);
 
-	//char *st = &((char *)pointer1)[5];
-	//st[5] = 1;
-	pointer2 = as_memcpy(pointer2, pointer1, 20);
+	printf("%s\n", str1);
+	printf("%s\n", str2);
 
-	for (i = 0; i < 20; i++) {
-		printf("%d ", ((char *)pointer1)[i]);
-	}
-	printf("\n");
-	for (i = 0; i < 20; i++) {
-		printf("%d ", ((char *)pointer2)[i]);
-	}
-
-	//printf("\n%d\n", as_atoi(st));
-
-	free(pointer1);
-	//free(pointer2);*/
+	free(str1);
+	free(str2);
 	return 0;
 }
