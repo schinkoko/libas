@@ -34,6 +34,8 @@ void	*as_memset(void *s, int c, size_t n);
 void	as_bzero(void *s, size_t n);
 void	*as_memcpy(void *dest, const void *src, size_t n);
 void	*as_memmove(void *dest, const void *src, size_t n);
+size_t as_strlcpy(char *dst,const char *src, size_t size);
+size_t as_strlcat(char *dst,const char *src, size_t size);
 
 int		as_toupper(int c);
 int		as_tolower(int c);
