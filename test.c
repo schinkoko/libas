@@ -27,6 +27,11 @@ int main() {
 	printf("%s\n", str1);
 	printf("%s\n", str2);
 
+	as_strlcpy(NULL, stroing2, as_strlen(stroing2) + 1);
+
+	printf("%s\n", str1);
+	printf("%s\n", str2);
+
 	free(str1);
 	free(str2);
 	return 0;

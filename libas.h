@@ -1,12 +1,17 @@
 #ifndef LIBAS_H
 #define LIBAS_H
 
-#define NULL ((void *)0)
-
 #include <stdio.h>
 #include <stdlib.h>
 
+#define AS_ERROR(...) do { \
+printf ("\nThe was an error of type: %s\nin file: %s\nat line: %d\n\n", as_error_str(__VA_ARGS__), __FILE__, __LINE__); \
+} while (0)
+
+#define NULL ((void *)0)
+
 typedef long unsigned int size_t;
+
 typedef long long intptr_t;
 
 typedef enum as_error_e {
@@ -22,7 +27,6 @@ typedef enum as_error_e {
 extern const char	*AS_ERROR_STRS[];
 
 const char	*as_error_str(as_error_t err);
-void	as_error(as_error_t err);
 int		as_abs(int c);
 int		as_isalpha(int c);
 int		as_isdigit(int c);
@@ -34,8 +38,8 @@ void	*as_memset(void *s, int c, size_t n);
 void	as_bzero(void *s, size_t n);
 void	*as_memcpy(void *dest, const void *src, size_t n);
 void	*as_memmove(void *dest, const void *src, size_t n);
-size_t as_strlcpy(char *dst,const char *src, size_t size);
-size_t as_strlcat(char *dst,const char *src, size_t size);
+size_t	as_strlcpy(char *dst,const char *src, size_t size);
+size_t	as_strlcat(char *dst,const char *src, size_t size);
 
 int		as_toupper(int c);
 int		as_tolower(int c);
